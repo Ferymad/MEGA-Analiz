@@ -74,6 +74,31 @@ L002:
 - Impact: Organized code structure, separation of concerns
 - Related: None
 
+## Internationalization (i18n) Setup
+
+We use `react-i18next` for multilingual support.
+
+### Adding New Translations
+
+1. Locate the translation files in `src/locales/{language}/translation.json`.
+2. Add new key-value pairs for each language.
+3. Use the new keys in your components with the `t` function: `t('your_new_key')`.
+
+### Switching Languages
+
+Use the `LanguageSwitcher` component to allow users to change languages.
+
+### Best Practices
+
+- Keep translation keys descriptive and consistent.
+- Use interpolation for dynamic content: `t('hello_name', { name: userName })`.
+- Consider using namespaces for large projects to organize translations.
+
+### Troubleshooting
+
+- If a translation is missing, check if the key exists in all language files.
+- Ensure `i18n.js` is imported before using translations in your app.
+
 ## CI/CD Setup
 
 ### Continuous Integration (CI)
