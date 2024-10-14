@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './contexts/AuthContext'
 import { I18nextProvider } from 'react-i18next'
 import i18n from './i18n'
@@ -22,7 +22,6 @@ function App() {
             </header>
             <main>
               <Routes>
-                <Route path="/" element={<Login />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/unauthorized" element={<Unauthorized />} />
@@ -31,11 +30,9 @@ function App() {
                 <Route element={<PrivateRoute allowedRoles={['production_operator', 'production_engineer', 'owner', 'reporting_staff', 'administrator']} />}>
                   <Route path="/dashboard" element={<Dashboard />} />
                 </Route>
+                <Route path="/" element={<Login />} />
               </Routes>
             </main>
-            <footer>
-              {/* Footer content */}
-            </footer>
           </div>
         </Router>
       </AuthProvider>
