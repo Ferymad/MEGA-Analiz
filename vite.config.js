@@ -6,8 +6,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'dist',
-    rollupOptions: {
-      external: ['react', 'react-dom'],
-    },
+    assetsDir: 'assets',
+    emptyOutDir: true,
   },
 })
