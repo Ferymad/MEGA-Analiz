@@ -1,24 +1,29 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import en from './locales/en/translation.json';
-import tr from './locales/tr/translation.json';
-
-const savedLanguage = localStorage.getItem('language') || 'en';
 
 i18n
   .use(initReactI18next)
   .init({
     resources: {
-      en: { translation: en },
-      tr: { translation: tr },
+      en: { translation: {} },
+      tr: { translation: {} },
     },
-    lng: savedLanguage,
+    lng: 'en',
     fallbackLng: 'en',
     interpolation: { escapeValue: false },
   });
 
-i18n.on('languageChanged', (lng) => {
-  localStorage.setItem('language', lng);
-});
+// Dynamically import translation files
+const loadTranslations = async () => {
+  const [enTranslations, trTranslations] = await Promise.all([
+    import('./locales/en/translation.json'),
+    import('./locales/tr/translation.json'),
+  ]);
+
+  i18n.addResourceBundle('en', 'translation', enTranslations.default, true, true);
+  i18n.addResourceBundle('tr', 'translation', trTranslations.default, true, true);
+};
+
+loadTranslations();
 
 export default i18n;
