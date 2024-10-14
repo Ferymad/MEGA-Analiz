@@ -1,3 +1,5 @@
+/* eslint-env node */
+/* eslint-disable no-undef */
 module.exports = {
   extends: [
     'eslint:recommended',
@@ -25,6 +27,7 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
-    'no-unused-vars': ['error', { 'varsIgnorePattern': 'React' }]
+    'no-unused-vars': ['error', { 'varsIgnorePattern': '^React$' }],
+    'react/jsx-uses-react': 'off',
   },
 };

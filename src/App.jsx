@@ -1,4 +1,3 @@
-import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { AuthProvider } from './contexts/AuthContext'
 import { I18nextProvider } from 'react-i18next'
@@ -31,7 +30,6 @@ function App() {
                 <Route element={<PrivateRoute allowedRoles={['production_operator', 'production_engineer', 'owner', 'reporting_staff', 'administrator']} />}>
                   <Route path="/dashboard" element={<Dashboard />} />
                 </Route>
-                {/* Add more routes as needed */}
               </Routes>
             </main>
             <footer>
