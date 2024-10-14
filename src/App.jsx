@@ -7,8 +7,16 @@ function App() {
 
   return (
     <div className="App">
-      <h1>{t('welcome_message')}</h1>
-      <LanguageSwitcher />
+      <header>
+        <LanguageSwitcher />
+      </header>
+      <main>
+        <h1>{t('welcome_message')}</h1>
+        {/* Other main content goes here */}
+      </main>
+      <footer>
+        {/* Footer content if needed */}
+      </footer>
     </div>
   )
 }
