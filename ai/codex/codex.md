@@ -186,3 +186,96 @@ Remember to never commit sensitive information directly to the repository.
 4. For sensitive information, ensure "Encrypt" is selected.
 
 Remember: Never commit sensitive information directly to the repository.
+
+## Supabase Setup
+
+- Project created on Supabase: "DoorFrameProduction"
+- API credentials stored in `.env` file (not committed to version control)
+- Supabase client initialized in `src/supabaseClient.js`
+- Supabase client library installed: @supabase/supabase-js
+
+Remember to never expose the Supabase URL or anon key in client-side code or version control.
+
+## Authentication Setup
+
+- Authentication context created in `src/contexts/AuthContext.jsx`
+- `AuthProvider` wraps the main App component to provide authentication state
+- `useAuth` hook available for components to access authentication functions and user state
+- Supabase auth methods integrated: signUp, signIn, signOut
+- Auth state persists across page reloads
+
+Usage example:
+
+## Authentication Components
+
+- Signup component created in `src/components/Signup.jsx`
+- Login component created in `src/components/Login.jsx`
+- Both components use Material-UI for styling and accessibility
+- Forms include email and password fields with proper validation
+- Error handling implemented for failed signup/login attempts
+- Internationalization support added using react-i18next
+
+Usage:
+These components can be imported and used in your main App or routing component.
+
+Example:
+
+## Role Management
+
+- Created `profiles` table in Supabase with fields: `id`, `name`, `role`, `preferred_language`
+- Modified `AuthContext` to create a profile upon user signup
+- Updated `Signup` component to include a name field
+- Default role set to 'production_operator'
+- Default language set to 'en'
+
+Roles defined:
+- production_operator
+- production_engineer
+- owner
+- reporting_staff
+- administrator
+
+Note: Further implementation needed to change user roles and manage permissions based on roles.
+
+## Row Level Security (RLS)
+
+- Implemented RLS policies for the `profiles` table in Supabase:
+  - Users can view their own profile
+  - Users can insert their own profile
+  - Users can update their own profile
+- These policies ensure that users can only access and modify their own data
+
+## AuthContext Updates
+
+- Added `userProfile` state to store the user's profile information
+- Implemented `fetchProfile` function to retrieve user profile after login
+- Updated `signIn`, `signUp`, and `signOut` functions to manage user profile data
+- `useAuth` hook now provides access to both `user` and `userProfile`
+
+Usage example:
+
+## Protected Routes
+
+- Implemented `PrivateRoute` component to handle authentication and role-based access control
+- Updated `App.jsx` to use React Router for navigation
+- Created `Dashboard` component as an example of a protected route
+- Created `Unauthorized` component to handle unauthorized access attempts
+
+Usage:
+Wrap protected routes with the `PrivateRoute` component and specify allowed roles:
+
+```
+## Password Reset and Email Verification
+
+- Implemented password reset functionality in `AuthContext`
+- Created `PasswordReset` component for initiating password reset
+- Created `UpdatePassword` component for setting new password after reset
+- Updated `App.jsx` to include new routes for password reset flow
+- Added link to password reset page in `Login` component
+
+Usage:
+- Users can request a password reset from the login page
+- Reset link is sent to the user's email (handled by Supabase)
+- Users can set a new password using the `UpdatePassword` component
+
+Note: Email verification is handled automatically by Supabase when a user signs up. You may need to configure email templates in the Supabase dashboard for a customized experience.
