@@ -2,5 +2,7 @@
   "welcome_message": "Uygulamamıza hoş geldiniz",
   "language": "Dil",
   "english": "İngilizce",
-  "turkish": "Türkçe"
+  "turkish": "Türkçe",
+  "count_is": "sayı",
+  "edit_instructions": "src/App.jsx dosyasını düzenleyin ve HMR'yi test etmek için kaydedin"
 }

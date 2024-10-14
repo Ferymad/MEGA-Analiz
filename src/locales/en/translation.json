@@ -2,5 +2,7 @@
   "welcome_message": "Welcome to our app",
   "language": "Language",
   "english": "English",
-  "turkish": "Turkish"
+  "turkish": "Turkish",
+  "count_is": "count is",
+  "edit_instructions": "Edit src/App.jsx and save to test HMR"
 }
