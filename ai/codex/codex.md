@@ -127,3 +127,37 @@ Remember to never commit sensitive information directly to the repository.
 
 - For GitHub Actions: Use GitHub Secrets to store sensitive information. Access them in the workflow file using `${{ secrets.SECRET_NAME }}`.
 - For Vercel: Add environment variables through the Vercel dashboard. They will be automatically available during build and runtime.
+
+## CI/CD Troubleshooting
+
+### Common CI Issues
+1. **Build Failures**: 
+   - Check if all dependencies are correctly listed in `package.json`.
+   - Ensure Node.js version in CI matches your local development version.
+2. **Test Failures**: 
+   - Run tests locally to reproduce the issue.
+   - Check if tests depend on environment variables not set in CI.
+
+### Common CD Issues
+1. **Deployment Failures**: 
+   - Verify build settings in Vercel dashboard.
+   - Check if all required environment variables are set.
+2. **Runtime Errors**: 
+   - Review Vercel deployment logs.
+   - Ensure compatibility between local and production environments.
+
+## Managing Environment Variables and Secrets
+
+### GitHub Actions
+1. Go to your GitHub repository settings.
+2. Navigate to Secrets and Variables > Actions.
+3. Click "New repository secret" to add a secret.
+4. In your workflow file, use secrets like this: `${{ secrets.SECRET_NAME }}`
+
+### Vercel
+1. Go to your project in the Vercel dashboard.
+2. Navigate to Settings > Environment Variables.
+3. Add your environment variables here.
+4. For sensitive information, ensure "Encrypt" is selected.
+
+Remember: Never commit sensitive information directly to the repository.
