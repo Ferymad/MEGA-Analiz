@@ -4,5 +4,6 @@
   "english": "İngilizce",
   "turkish": "Türkçe",
   "count_is": "sayı",
-  "edit_instructions": "src/App.jsx dosyasını düzenleyin ve HMR'yi test etmek için kaydedin"
+  "edit_instructions": "src/App.jsx dosyasını düzenleyin ve HMR'yi test etmek için kaydedin",
+  "click_on_logos": "Daha fazla bilgi için Vite ve React logolarına tıklayın"
 }

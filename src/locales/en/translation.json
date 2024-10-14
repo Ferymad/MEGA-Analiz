@@ -4,5 +4,6 @@
   "english": "English",
   "turkish": "Turkish",
   "count_is": "count is",
-  "edit_instructions": "Edit src/App.jsx and save to test HMR"
+  "edit_instructions": "Edit src/App.jsx and save to test HMR",
+  "click_on_logos": "Click on the Vite and React logos to learn more"
 }

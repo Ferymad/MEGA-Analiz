@@ -1,10 +1,13 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'  // Import useTranslation hook
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import LanguageSwitcher from './components/LanguageSwitcher'  // Import LanguageSwitcher component
 
 function App() {
   const [count, setCount] = useState(0)
+  const { t } = useTranslation()  // Use the translation hook
 
   return (
     <>
@@ -16,17 +19,18 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>{t('welcome_message')}</h1>
+      <LanguageSwitcher />  {/* Add the LanguageSwitcher component */}
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+          {t('count_is')} {count}
         </button>
         <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+          {t('edit_instructions')}
         </p>
       </div>
       <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+        {t('click_on_logos')}
       </p>
     </>
   )
