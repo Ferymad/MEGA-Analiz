@@ -24,6 +24,3 @@ jobs:
       run: npm run lint
     - name: Build
       run: npm run build
-    # Remove or comment out the test step if you don't have tests yet
-    # - name: Test
-    #   run: npm test
