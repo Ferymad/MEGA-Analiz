@@ -74,79 +74,39 @@ L002:
 - Impact: Organized code structure, separation of concerns
 - Related: None
 
-## Continuous Integration and Deployment (CI/CD)
+## CI/CD Setup
 
 ### Continuous Integration (CI)
 
-- **Workflow File**: `.github/workflows/ci.yml`
-- **Triggers**: Runs on push and pull requests to the `main` branch.
-- **Steps**:
-  1. **Checkout Code**: Uses `actions/checkout@v2` to clone the repository.
-  2. **Setup Node.js**: Sets up Node.js environment using `actions/setup-node@v2` with Node.js version 16.x.
-  3. **Install Dependencies**: Runs `npm install` to install project dependencies.
-  4. **Build Project**: Executes `npm run build --if-present` if a build script is available.
-  5. **Run Tests**: Runs `npm test` to execute the test suite.
+Our CI pipeline is set up using GitHub Actions. The workflow file is located at `.github/workflows/ci.yml`.
+
+Key points:
+- Triggers on pushes and pull requests to the `main` branch.
+- Uses Node.js 16.x.
+- Installs dependencies, builds the project, and runs tests.
+
+Troubleshooting:
+- If CI fails, check the GitHub Actions log for specific error messages.
+- Ensure all dependencies are correctly listed in `package.json`.
+- Verify that build and test scripts in `package.json` are correct.
 
 ### Continuous Deployment (CD)
 
-- **Hosting Platform**: Vercel
-- **Steps**:
-  1. **Connect Repository**: Link your GitHub repository to Vercel via the Vercel dashboard.
-  2. **Automatic Deployments**: Configure Vercel to automatically deploy on pushes to the `main` branch.
-  3. **Environment Variables**: Set necessary environment variables in Vercel for production.
+We use Vercel for continuous deployment.
 
-- **Risk Management**:
-  - **Potential Risks**:
-    - **CI Pipeline Failures**: Configuration errors may cause build or test failures.
-    - **Deployment Issues**: Misconfigurations in Vercel may lead to failed deployments.
-  - **Mitigation Strategies**:
-    - **For CI**:
-      - Validate YAML syntax using online validators.
-      - Use sample configurations as templates.
-      - Monitor CI runs and address issues promptly.
-    - **For CD**:
-      - Test deployments in a staging environment before production.
-      - Monitor deployment logs for errors.
-      - Ensure environment variables are correctly set.
+Setup:
+1. Connect your GitHub repository to Vercel.
+2. Configure automatic deployments for the `main` branch.
+3. Set necessary environment variables in the Vercel dashboard.
 
-## Code Quality Tools
+Troubleshooting:
+- If deployment fails, check Vercel logs for error messages.
+- Ensure all required environment variables are set correctly.
+- Verify that the build command and output directory are correctly configured in Vercel.
 
-### ESLint
+### Managing Environment Variables and Secrets
 
-- **Installation:**
+- For GitHub Actions: Use GitHub Secrets to store sensitive information. Access them in the workflow file using `${{ secrets.SECRET_NAME }}`.
+- For Vercel: Add environment variables through the Vercel dashboard. They will be automatically available during build and runtime.
 
-  ```bash
-  npm install eslint eslint-plugin-react eslint-plugin-jsx-a11y eslint-config-prettier eslint-plugin-prettier --save-dev
-  ```
-
-- **Initialization:**
-
-  ```bash
-  npx eslint --init
-  ```
-
-- **Purpose:** Ensures code consistency and catches potential errors during development.
-
-### Prettier
-
-- **Installation:**
-
-  ```bash
-  npm install prettier eslint-plugin-prettier eslint-config-prettier --save-dev
-  ```
-
-- **Configuration:**
-  - Created `.prettierrc` with preferred formatting rules.
-
-- **Purpose:** Automatically formats code to maintain a consistent style across the codebase.
-
-### Integration
-
-- **ESLint and Prettier Integration:**
-  - Configured ESLint to work with Prettier to avoid conflicts.
-  - Added Prettier as an ESLint plugin.
-
-## Why These Tools?
-
-- **ESLint** helps in identifying and fixing problematic patterns in JavaScript code.
-- **Prettier** ensures that all code follows a consistent style, enhancing readability and maintainability.
+Remember to never commit sensitive information directly to the repository.
