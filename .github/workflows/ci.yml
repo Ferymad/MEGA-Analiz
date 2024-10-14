@@ -17,9 +17,7 @@ jobs:
       with:
         node-version: '18'
     - name: Install dependencies
-      run: |
-        rm -rf node_modules
-        npm ci
+      run: npm ci
     - name: List installed packages
       run: npm list --depth=0
     - name: Lint
