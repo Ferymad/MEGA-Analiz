@@ -95,18 +95,35 @@ Troubleshooting:
 We use Vercel for continuous deployment.
 
 Setup:
-1. Connect your GitHub repository to Vercel.
-2. Configure automatic deployments for the `main` branch.
+1. Connected GitHub repository to Vercel.
+2. Configured automatic deployments for the `main` branch.
 3. Set necessary environment variables in the Vercel dashboard.
+
+Configuration:
+- Framework Preset: Vite
+- Build Command: `npm run build` (or `vite build`)
+- Output Directory: `dist`
+
+Deployment Process:
+- Automatic deployments are triggered on pushes to the `main` branch.
+- Vercel builds the project and deploys it to their global CDN.
 
 Troubleshooting:
 - If deployment fails, check Vercel logs for error messages.
 - Ensure all required environment variables are set correctly.
 - Verify that the build command and output directory are correctly configured in Vercel.
 
+Accessing the Deployed Application:
+- The production URL is: [Your Vercel Project URL]
+- Preview deployments are created for pull requests.
+
+Environment Variables:
+- Managed through the Vercel dashboard.
+- Ensure all necessary variables for production are set.
+
+Remember to never commit sensitive information directly to the repository.
+
 ### Managing Environment Variables and Secrets
 
 - For GitHub Actions: Use GitHub Secrets to store sensitive information. Access them in the workflow file using `${{ secrets.SECRET_NAME }}`.
 - For Vercel: Add environment variables through the Vercel dashboard. They will be automatically available during build and runtime.
-
-Remember to never commit sensitive information directly to the repository.
